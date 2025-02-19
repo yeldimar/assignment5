@@ -1,5 +1,4 @@
 /*
- * File: Main.java
  * Description: Entry point for the Airport Simulation project (Submission A)
  */
 public class Main {

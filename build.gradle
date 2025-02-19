@@ -1,9 +1,9 @@
 plugins {
     id 'java'
     id 'checkstyle'
-    id 'com.github.spotbugs' version '5.0.13' // Latest working version
+    id 'com.github.spotbugs' version '5.0.13' 
 }
-
+//testing if spotbugs work
 group 'com.airport'
 version '1.0-SNAPSHOT'
 
@@ -19,20 +19,18 @@ test {
     useJUnitPlatform()
 }
 
-// Checkstyle Configuration (Ensure the file exists)
 checkstyle {
     toolVersion = "8.45"
     configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
 }
 
-// Fix for SpotBugs Execution
 spotbugs {
-    toolVersion = "4.5.2" // Use a working version for Gradle 8+
-    ignoreFailures = true // Avoid breaking the build
+    toolVersion = "4.5.2" 
+    ignoreFailures = true 
 }
 
 tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
-    onlyIf { JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17) } // Prevent SpotBugs from running on unsupported versions
+    onlyIf { JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17) } 
     reports {
         xml.required = false
         html.required = true
