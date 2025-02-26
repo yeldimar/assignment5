@@ -1,5 +1,7 @@
 package Airport;
 
+import java.util.Iterator;
+
 class Simulation {
     private Airport airport;
     private int cycleCount = 0;
@@ -13,11 +15,33 @@ class Simulation {
             cycleCount++;
             System.out.println("\n🔄 Cycle " + cycleCount + " started");
 
-            for (Flight flight : airport.getFlights()) { // ✅ Fix: Use getter method
-                if (flight.getAssignedAirplane() == null) { // ✅ Fix: Use getter method
+            // Process Arrivals & Gate Assignments
+            for (Flight flight : airport.getFlights()) {
+                if (flight.getAssignedAirplane() == null) {
                     Gate gate = airport.getAvailableGate();
                     if (gate != null) {
-                        gate.assignAirplane(AirplaneFactory.createAirplane(flight.getAirplaneType())); // ✅ Fix: Use getter method
+                        Airplane airplane = AirplaneFactory.createAirplane(flight.getAirplaneType());
+                        gate.assignAirplane(airplane);
+                        flight.assignAirplane(airplane);
+                        System.out.println("✅ Flight " + flight.getFlightNumber() + " has been assigned a gate.");
+                    } else {
+                        System.out.println("⚠ No available gates for Flight " + flight.getFlightNumber());
+                    }
+                }
+            }
+
+            // Process Departures
+            Iterator<Flight> iterator = airport.getFlights().iterator();
+            while (iterator.hasNext()) {
+                Flight flight = iterator.next();
+                if (flight.getAssignedAirplane() != null && cycleCount - flight.getExpectedTakeoffTime() >= 3) {
+                    Runway runway = airport.getAvailableRunway();
+                    if (runway != null) {
+                        runway.assignAirplane(flight.getAssignedAirplane());
+                        System.out.println("✈ Flight " + flight.getFlightNumber() + " is departing.");
+                        iterator.remove(); // Remove flight from the system after departure
+                    } else {
+                        System.out.println("⛔ No available runways for Flight " + flight.getFlightNumber());
                     }
                 }
             }
