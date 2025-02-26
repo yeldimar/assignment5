@@ -1,4 +1,4 @@
-package factory;
+package Airport;
 
 /*
  * Description: Entry point for the Airport Simulation project (Submission A)
