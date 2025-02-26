@@ -1,6 +1,13 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - airport-simulation
+  pull_request:
+    branches:
+      - airport-simulation
+
 
 jobs:
   build:
