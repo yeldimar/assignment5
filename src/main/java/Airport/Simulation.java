@@ -1,6 +1,7 @@
 package Airport;
 
 import java.util.Iterator;
+
 import javax.swing.JTextArea;
 
 class Simulation {
@@ -63,9 +64,9 @@ class Simulation {
                         Airplane airplane = AirplaneFactory.createAirplane(flight.getAirplaneType());
                         gate.assignAirplane(airplane);
                         flight.assignAirplane(airplane);
-                        logArea.append("✅ Flight " + flight.getFlightNumber() + " assigned to Gate " + gate.getGateNumber() + "\n");
+                        logArea.append("✅ Flight " + flight.getFlightNumber() + " assigned to Gate " + gate.getGateNumber() + " \n");
                     } else {
-                        logArea.append("⚠ No available gates for Flight " + flight.getFlightNumber() + "\n");
+                        logArea.append("⚠ No available gates for Flight " + flight.getFlightNumber() + " \n");
                     }
                 }
             }
@@ -78,10 +79,10 @@ class Simulation {
                     Runway runway = airport.getAvailableRunway();
                     if (runway != null) {
                         runway.assignAirplane(flight.getAssignedAirplane());
-                        logArea.append("✈ Flight " + flight.getFlightNumber() + " departed from Runway " + runway.getRunwayNumber() + "\n");
+                        logArea.append("✈ Flight " + flight.getFlightNumber() + " departed from Runway " + runway.getRunwayNumber() + " \n");
                         iterator.remove();
                     } else {
-                        logArea.append("⛔ No available runways for Flight " + flight.getFlightNumber() + "\n");
+                        logArea.append("⛔ No available runways for Flight " + flight.getFlightNumber() + " \n");
                     }
                 }
             }

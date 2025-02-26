@@ -6,9 +6,10 @@ import java.util.List;
 class Flight extends Subject {
     private String flightNumber;
     private String destination;
-    private String airplaneType; // Flight specifies its airplane type.
+    private String airplaneType;
     private int expectedTakeoffTime;
     private int gateNumber;
+    private String state; 
     private Airplane assignedAirplane;
     private List<Observer> observers;
 
@@ -49,5 +50,12 @@ class Flight extends Subject {
 
     public Airplane getAssignedAirplane() {
         return assignedAirplane;
+    }
+
+    public String getState() { 
+        return state;
+    }
+    public void setState(String newState) { 
+        this.state = newState;
     }
 }

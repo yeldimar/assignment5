@@ -30,4 +30,8 @@ class Runway {
     public int getRunwayNumber() {
         return runwayNumber;
     }
+
+    public boolean isOccupied() { // ✅ Fixed infinite recursion
+        return isOccupied; // 🔹 Directly return the boolean field
+    }
 }

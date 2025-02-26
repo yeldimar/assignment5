@@ -45,8 +45,15 @@ class Airport {
         return null;
     }
 
-    // ✅ Fix: Added getter for flights to prevent direct access
     public List<Flight> getFlights() {
         return flights;
+    }
+
+    public List<Gate> getGates() {
+        return gates;
+    }
+
+    public List<Runway> getRunways() {
+        return runways;
     }
 }
