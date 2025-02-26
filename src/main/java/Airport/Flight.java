@@ -1,6 +1,5 @@
 package Airport;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Flight extends Subject {
@@ -9,16 +8,20 @@ class Flight extends Subject {
     private String airplaneType;
     private int expectedTakeoffTime;
     private int gateNumber;
+    private int businessPassengers;
+    private int economyPassengers;
     private String state; 
     private Airplane assignedAirplane;
     private List<Observer> observers;
 
-    public Flight(String flightNumber, String destination, int takeoffTime, String airplaneType) {
+    public Flight(String flightNumber, String destination, int takeoffTime, String airplaneType, int businessPassengers, int economyPassengers) {
         this.flightNumber = flightNumber;
         this.destination = destination;
+        this.airplaneType = airplaneType;
         this.expectedTakeoffTime = takeoffTime;
-        this.airplaneType = airplaneType; // Store requested type
-        this.observers = new ArrayList<>();
+        this.businessPassengers = businessPassengers; // ✅ Fixed assignment
+        this.economyPassengers = economyPassengers;   // ✅ Fixed assignment
+        this.state = "OPEN_FOR_BOOKING"; // Default State
     }
 
     public void assignAirplane(Airplane airplane) {
@@ -27,9 +30,17 @@ class Flight extends Subject {
         notifyObservers("Airplane Assigned");
     }
 
-    // ✅ Getter methods to fix visibility issues
+    // ✅ Getter methods
     public String getFlightNumber() {
         return flightNumber;
+    }
+
+    public int getBusinessPassengers() {
+        return businessPassengers;
+    }
+
+    public int getEconomyPassengers() {
+        return economyPassengers;
     }
 
     public String getDestination() {
@@ -52,10 +63,11 @@ class Flight extends Subject {
         return assignedAirplane;
     }
 
-    public String getState() { 
+    public String getState() {
         return state;
     }
-    public void setState(String newState) { 
+
+    public void setState(String newState) {
         this.state = newState;
     }
 }

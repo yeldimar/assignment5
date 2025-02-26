@@ -31,7 +31,7 @@ class SimulationTest {
     @Test
     @DisplayName("Test Flight Addition to Airport")
     void testAddFlight() {
-        Flight flight = new Flight("A123", "New York", 2, "Passenger");
+        Flight flight = new Flight("A123", "New York", 2, "Passenger", 20, 100);
         airport.addFlight(flight);
         List<Flight> flights = airport.getFlights();
         assertEquals(1, flights.size(), "Flight should be added to airport");
@@ -40,7 +40,7 @@ class SimulationTest {
     @Test
     @DisplayName("Test Gate Assignment to Flight")
     void testGateAssignment() {
-        Flight flight = new Flight("A456", "Los Angeles", 3, "Cargo");
+        Flight flight = new Flight("A456", "Los Angeles", 3, "Cargo", 5, 30);
         airport.addFlight(flight);
         simulation.run(1);
         assertNotNull(flight.getAssignedAirplane(), "Flight should be assigned an airplane");
@@ -49,7 +49,7 @@ class SimulationTest {
     @Test
     @DisplayName("Test Flight Departure after Cycles")
     void testFlightDeparture() {
-        Flight flight = new Flight("B789", "Chicago", 1, "Passenger");
+        Flight flight = new Flight("B789", "Chicago", 1, "Passenger", 15, 120);
         airport.addFlight(flight);
         simulation.run(5); // Run for 5 cycles
         assertEquals(0, airport.getFlights().size(), "Flight should be removed after departure");

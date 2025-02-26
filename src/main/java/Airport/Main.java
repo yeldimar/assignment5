@@ -40,10 +40,16 @@ public class Main {
         startButton.addActionListener(e -> {
             startButton.setEnabled(false); // Disable button after start
             Airport airport = new Airport(3, 2); // Example: 3 Gates, 2 Runways
+            
+            // Add sample flights to the airport
+            airport.addFlight(new Flight("F100", "New York", 3, "Passenger", 2, 100));
+            airport.addFlight(new Flight("F200", "London", 5, "Passenger", 5, 150));
+            airport.addFlight(new Flight("F300", "Paris", 2, "Cargo", 0, 0));
+        
             Simulation simulation = new Simulation(airport);
             new Thread(() -> simulation.run(logArea)).start(); // Run simulation in new thread
         });
-
+        
         // Add components to control panel
         controlPanel.add(startButton);
         controlPanel.setBackground(new Color(70, 130, 180)); // Steel blue background

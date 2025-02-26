@@ -10,4 +10,12 @@ abstract class Airplane {
     public String getType() {
         return type;
     }
+
+    public int getCapacity() {  // ✅ Add this
+        return capacity;
+    }
+
+    public int getFuelEfficiency() {  // ✅ Add this
+        return fuelEfficiency;
+    }
 }

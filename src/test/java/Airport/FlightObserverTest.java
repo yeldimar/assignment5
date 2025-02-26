@@ -12,7 +12,7 @@ class FlightObserverTest {
 
     @BeforeEach
     void setUp() {
-        flight = new Flight("A321", "Los Angeles", 2, "Passenger");
+        flight = new Flight("A321", "Los Angeles", 2, "Passenger", 10, 50);
         passenger1 = new Passenger("John Doe");
         passenger2 = new Passenger("Jane Doe");
         flight.addObserver(passenger1);
