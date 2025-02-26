@@ -86,7 +86,9 @@ class Simulation {
             System.out.println("\n=== ✅ End of Cycle " + cycleCount + " ===");
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+                
+            }
         }
         System.out.println("\n✅ Simulation Completed!");
     }
@@ -166,7 +168,9 @@ class Simulation {
     
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+
+            }
         }
     
         logArea.append("\n✅ Simulation Completed!\n");
