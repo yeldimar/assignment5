@@ -8,7 +8,9 @@ class Gate {
         this.gateNumber = gateNumber;
         this.isOccupied = false;
     }
-
+    public int getGateNumber() { 
+        return gateNumber;
+    }
     public boolean isAvailable() {
         return !isOccupied;
     }

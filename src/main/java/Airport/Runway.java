@@ -26,4 +26,8 @@ class Runway {
         isOccupied = false;
         System.out.println("🛬 Runway " + runwayNumber + " is now available.");
     }
+
+    public int getRunwayNumber() {
+        return runwayNumber;
+    }
 }
