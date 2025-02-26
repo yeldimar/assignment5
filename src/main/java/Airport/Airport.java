@@ -24,12 +24,12 @@ class Airport {
 
     public void addFlight(Flight flight) {
         flights.add(flight);
-        System.out.println("🛫 Flight " + flight.flightNumber + " added to the airport.");
+        System.out.println("🛫 Flight " + flight.getFlightNumber() + " added to the airport.");
     }
 
     public Gate getAvailableGate() {
         for (Gate gate : gates) {
-            if (gate.isAvailable()) {   
+            if (gate.isAvailable()) {
                 return gate;
             }
         }
@@ -43,5 +43,10 @@ class Airport {
             }
         }
         return null;
+    }
+
+    // ✅ Fix: Added getter for flights to prevent direct access
+    public List<Flight> getFlights() {
+        return flights;
     }
 }
