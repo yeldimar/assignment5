@@ -4,7 +4,7 @@ class AirplaneContext {
     private AirplaneState state;
 
     public AirplaneContext() {
-        this.state = new LandedState(); // Default state
+        this.state = new LandedState(); 
     }
 
     public void setState(AirplaneState state) {
