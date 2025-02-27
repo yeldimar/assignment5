@@ -47,13 +47,13 @@ jobs:
         run: ./gradlew test
 
       - name: Upload Checkstyle Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: checkstyle-report
           path: build/reports/checkstyle/main.html
 
       - name: Upload SpotBugs Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: spotbugs-report
           path: build/reports/spotbugs/main.html
