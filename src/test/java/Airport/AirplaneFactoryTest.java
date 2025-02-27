@@ -4,10 +4,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.io.OutputStreamWriter;
+
+import javax.swing.JTextArea;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,16 +19,20 @@ class SimulationTest {
     private Simulation simulation;
     private ByteArrayOutputStream outputStream;
     private PrintStream originalOut;
+    private JTextArea logArea;
 
     @BeforeEach
     void setUp() {
         airport = new Airport(3, 2); // 3 gates, 2 runways
         simulation = new Simulation(airport);
-
+        
         originalOut = System.out;
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream, true, StandardCharsets.UTF_8));
+    
+        logArea = new JTextArea(); // ✅ Initialize logArea to avoid NullPointerException
     }
+    
 
     @Test
     @DisplayName("Test Flight Addition to Airport")
@@ -45,6 +51,27 @@ class SimulationTest {
         simulation.run(1);
         assertNotNull(flight.getAssignedAirplane(), "Flight should be assigned an airplane");
     }
+    @Test
+    void testRunwayAssignment() {
+        Flight flight1 = new Flight("F300", "Paris", 2, "Cargo", 0, 0);
+        Flight flight2 = new Flight("F400", "Tokyo", 4, "Passenger", 3, 180);
+    
+        airport.addFlight(flight1);
+        airport.addFlight(flight2);
+    
+        logArea = new JTextArea(); // ✅ Ensure logArea is initialized before calling run()
+        simulation.run(logArea);
+    
+        assertNotNull(flight1.getAssignedAirplane(), "Flight 1 should be assigned an airplane");
+        assertNotNull(flight2.getAssignedAirplane(), "Flight 2 should be assigned an airplane");
+    }
+    
+    @Test
+    void testEmergencyLanding() {
+        logArea = new JTextArea(); // ✅ Initialize logArea
+        simulation.run(logArea);
+        assertTrue(logArea.getText().contains("Emergency Landing"), "Should simulate an emergency landing");
+    }
 
     @Test
     @DisplayName("Test Flight Departure after Cycles")
@@ -53,5 +80,11 @@ class SimulationTest {
         airport.addFlight(flight);
         simulation.run(5); // Run for 5 cycles
         assertEquals(0, airport.getFlights().size(), "Flight should be removed after departure");
+    }
+    @Test
+    void testRefuelingEvent() {
+        logArea = new JTextArea(); // ✅ Initialize logArea
+        simulation.run(logArea);
+        assertTrue(logArea.getText().contains("refueling"), "Should simulate an airplane refueling event");
     }
 }
