@@ -23,14 +23,14 @@ class SimulationTest {
 
     @BeforeEach
     void setUp() {
-        airport = new Airport(3, 2); // 3 gates, 2 runways
+        airport = new Airport(3, 2); 
         simulation = new Simulation(airport);
         
         originalOut = System.out;
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream, true, StandardCharsets.UTF_8));
     
-        logArea = new JTextArea(); // ✅ Initialize logArea to avoid NullPointerException
+        logArea = new JTextArea(); 
     }
     
 
@@ -59,7 +59,7 @@ class SimulationTest {
         airport.addFlight(flight1);
         airport.addFlight(flight2);
     
-        logArea = new JTextArea(); // ✅ Ensure logArea is initialized before calling run()
+        logArea = new JTextArea(); 
         simulation.run(logArea);
     
         assertNotNull(flight1.getAssignedAirplane(), "Flight 1 should be assigned an airplane");
@@ -68,7 +68,7 @@ class SimulationTest {
     
     @Test
     void testEmergencyLanding() {
-        logArea = new JTextArea(); // ✅ Initialize logArea
+        logArea = new JTextArea(); 
         simulation.run(logArea);
         assertTrue(logArea.getText().contains("Emergency Landing"), "Should simulate an emergency landing");
     }
@@ -78,12 +78,12 @@ class SimulationTest {
     void testFlightDeparture() {
         Flight flight = new Flight("B789", "Chicago", 1, "Passenger", 15, 120);
         airport.addFlight(flight);
-        simulation.run(5); // Run for 5 cycles
+        simulation.run(5); 
         assertEquals(0, airport.getFlights().size(), "Flight should be removed after departure");
     }
     @Test
     void testRefuelingEvent() {
-        logArea = new JTextArea(); // ✅ Initialize logArea
+        logArea = new JTextArea(); 
         simulation.run(logArea);
         assertTrue(logArea.getText().contains("refueling"), "Should simulate an airplane refueling event");
     }

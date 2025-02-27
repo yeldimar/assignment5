@@ -23,7 +23,7 @@ class FlightObserverTest {
     @DisplayName("Test Observer Pattern - Multiple Notifications")
     void testMultipleObserversReceiveUpdates() {
         flight.notifyObservers("Gate Changed");
-        assertTrue(true); // Manually check console for both notifications
+        assertTrue(true); 
     }
 
     @Test
@@ -31,6 +31,6 @@ class FlightObserverTest {
     void testRemoveObserver() {
         flight.removeObserver(passenger1);
         flight.notifyObservers("Flight Delayed");
-        assertTrue(true); // Check console - should NOT notify passenger1
+        assertTrue(true); 
     }
 }

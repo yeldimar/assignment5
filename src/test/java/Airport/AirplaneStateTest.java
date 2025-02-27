@@ -16,9 +16,9 @@ class AirplaneStateTest {
     @Test
     @DisplayName("Test State Pattern - Invalid State Transition")
     void testInvalidStateTransition() {
-        airplane.proceed(); // Landed -> At Gate
-        airplane.proceed(); // At Gate -> Departing
-        airplane.proceed(); // Should remain in Departing
-        assertTrue(true); // Verify console output manually
+        airplane.proceed(); 
+        airplane.proceed(); 
+        airplane.proceed(); 
+        assertTrue(true); 
     }
 }
