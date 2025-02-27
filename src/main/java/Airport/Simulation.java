@@ -172,7 +172,7 @@ class Simulation {
 
             }
         }
-    
+        //Testing
         logArea.append("\n✅ Simulation Completed!\n");
     }
 }    
