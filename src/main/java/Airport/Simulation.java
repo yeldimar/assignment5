@@ -73,13 +73,13 @@ class Simulation {
             }
 
             // Random emergency events
-            if (random.nextDouble() < 0.10) { // 10% chance
+            if (random.nextDouble() < 0.10) { 
                 System.out.println("\n⚠ Emergency Landing! A plane is returning unexpectedly!");
             }
-            if (random.nextDouble() < 0.10) { // 10% chance
+            if (random.nextDouble() < 0.10) { 
                 System.out.println("🛠 Maintenance in progress on a random airplane!");
             }
-            if (random.nextDouble() < 0.10) { // 10% chance
+            if (random.nextDouble() < 0.10) {
                 System.out.println("⛽ A plane is refueling!");
             }
 
@@ -87,7 +87,7 @@ class Simulation {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ignored) {
-                
+
             }
         }
         System.out.println("\n✅ Simulation Completed!");
@@ -95,7 +95,7 @@ class Simulation {
 
     // GUI Version
     public void run(JTextArea logArea) {
-        for (int i = 0; i < 10; i++) { // 10 Cycles Simulation
+        for (int i = 0; i < 10; i++) { 
             cycleCount++;
             logArea.append("\n=== 🕒 Time Cycle: " + cycleCount + " ===\n");
     

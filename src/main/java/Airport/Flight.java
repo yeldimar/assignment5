@@ -19,9 +19,9 @@ class Flight extends Subject {
         this.destination = destination;
         this.airplaneType = airplaneType;
         this.expectedTakeoffTime = takeoffTime;
-        this.businessPassengers = businessPassengers; // ✅ Fixed assignment
-        this.economyPassengers = economyPassengers;   // ✅ Fixed assignment
-        this.state = "OPEN_FOR_BOOKING"; // Default State
+        this.businessPassengers = businessPassengers; 
+        this.economyPassengers = economyPassengers;   
+        this.state = "OPEN_FOR_BOOKING"; 
     }
 
     public void assignAirplane(Airplane airplane) {
@@ -30,7 +30,6 @@ class Flight extends Subject {
         notifyObservers("Airplane Assigned");
     }
 
-    // ✅ Getter methods
     public String getFlightNumber() {
         return flightNumber;
     }

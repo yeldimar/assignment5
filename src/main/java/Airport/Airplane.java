@@ -11,11 +11,11 @@ abstract class Airplane {
         return type;
     }
 
-    public int getCapacity() {  // ✅ Add this
+    public int getCapacity() { 
         return capacity;
     }
 
-    public int getFuelEfficiency() {  // ✅ Add this
+    public int getFuelEfficiency() {  
         return fuelEfficiency;
     }
 }
